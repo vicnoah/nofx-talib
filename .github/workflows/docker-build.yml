@@ -62,7 +62,7 @@ jobs:
           images: |
             ${{ env.REGISTRY_GHCR }}/${{ github.repository }}/nofx-${{ matrix.image_suffix }}
             ${{ secrets.DOCKERHUB_USERNAME && format('{0}/nofx-{1}', secrets.DOCKERHUB_USERNAME, matrix.image_suffix) || '' }}
-          tags: |
+          tags: >-
             type=ref,event=branch
             type=ref,event=pr
             type=semver,pattern={{version}}
