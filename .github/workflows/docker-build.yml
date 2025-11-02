@@ -68,8 +68,7 @@ jobs:
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
             type=semver,pattern={{major}}
-            type=sha,prefix={{branch^}},enable={{branch^}}
-            type=sha,prefix=sha-,enable={{!branch^}}
+            type=sha,prefix={{if ne .Branch ""}}{{.Branch}}-{{else}}sha-{{end}}
             type=raw,value=latest,enable={{is_default_branch}}
       
       - name: Build and push ${{ matrix.name }} image
